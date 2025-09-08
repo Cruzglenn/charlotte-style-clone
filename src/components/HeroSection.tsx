@@ -32,14 +32,15 @@ const HeroSection = () => {
             Designed for the urban explorer.
           </p>
 
-          {/* CTA Button */}
           <div className="pt-8">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-semibold tracking-wide shadow-neon transition-bounce hover:scale-105"
-            >
-              SHOP NOW
-            </Button>
+            <a href="/shop">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-6 text-lg font-semibold tracking-wide shadow-neon transition-bounce hover:scale-105"
+              >
+                SHOP NOW
+              </Button>
+            </a>
           </div>
 
           {/* Collection Badge */}
