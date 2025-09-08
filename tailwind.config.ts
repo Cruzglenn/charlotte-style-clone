@@ -57,6 +57,31 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        /* Urban streetwear palette */
+        neon: {
+          blue: "hsl(var(--neon-blue))",
+          cyan: "hsl(var(--electric-cyan))",
+        },
+        midnight: "hsl(var(--midnight))",
+        steel: "hsl(var(--steel))",
+        concrete: "hsl(var(--concrete))",
+      },
+      backgroundImage: {
+        'gradient-hero': 'var(--gradient-hero)',
+        'gradient-neon': 'var(--gradient-neon)',
+        'gradient-overlay': 'var(--gradient-overlay)',
+      },
+      boxShadow: {
+        'neon': 'var(--shadow-neon)',
+        'card': 'var(--shadow-card)',
+      },
+      transitionTimingFunction: {
+        'smooth': 'var(--transition-smooth)',
+        'bounce': 'var(--transition-bounce)',
+      },
+      fontFamily: {
+        'heading': ['Inter', 'system-ui', 'sans-serif'],
+        'body': ['Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
