@@ -1,15 +1,17 @@
-import { Search, ShoppingCart, User, Menu } from "lucide-react";
+import { Search, ShoppingCart, User, Menu, Shield } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import SearchModal from "./SearchModal";
 import CartSidebar from "./CartSidebar";
 import { useCartStore } from "@/stores/cartStore";
+import { useUserRole } from "@/hooks/useUserRole";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const getTotalItems = useCartStore((state) => state.getTotalItems);
+  const { isAdmin, user } = useUserRole();
 
   return (
     <>
@@ -59,6 +61,18 @@ const Navigation = () => {
               >
                 <Search size={20} />
               </Button>
+              {isAdmin && (
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="hover:bg-white/10 hover:text-white transition-all duration-300 hover:scale-110"
+                  title="Admin Panel"
+                >
+                  <a href="/admin">
+                    <Shield size={20} />
+                  </a>
+                </Button>
+              )}
               <Button 
                 variant="ghost" 
                 size="sm"

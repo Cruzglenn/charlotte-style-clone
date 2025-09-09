@@ -8,11 +8,16 @@ import { toast } from "@/hooks/use-toast";
 import VirtualTryOn from "@/components/VirtualTryOn";
 
 interface Product {
-  id: number;
+  id: string;
   name: string;
   price: number;
-  image: string;
+  images?: string[];
+  image?: string;
   category: string;
+  description?: string;
+  sizes?: string[];
+  colors?: string[];
+  stock?: Record<string, number>;
 }
 
 interface ProductQuickViewProps {
@@ -27,10 +32,10 @@ const ProductQuickView = ({ product, children }: ProductQuickViewProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const addItem = useCartStore((state) => state.addItem);
 
-  const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
-  const colors = ["Black", "White", "Navy", "Charcoal"];
-  const productImages = [
-    product.image,
+  const sizes = product.sizes || ["XS", "S", "M", "L", "XL", "XXL"];
+  const colors = product.colors || ["Black", "White", "Navy", "Charcoal"];
+  const productImages = product.images || [
+    product.image || '/placeholder.svg',
     "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop&q=80",
     "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop&q=80",
   ];
@@ -40,7 +45,7 @@ const ProductQuickView = ({ product, children }: ProductQuickViewProps) => {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.image,
+      image: product.images?.[0] || product.image || '',
       quantity: 1,
       size: selectedSize,
     });
@@ -130,8 +135,7 @@ const ProductQuickView = ({ product, children }: ProductQuickViewProps) => {
 
             <div className="space-y-4">
               <p className="text-muted-foreground">
-                Authentic streetwear piece that connects you to your heritage. 
-                Premium quality fabric with modern cut and traditional inspiration.
+                {product.description || "Authentic streetwear piece that connects you to your heritage. Premium quality fabric with modern cut and traditional inspiration."}
               </p>
 
               {/* Color Selection */}
@@ -198,7 +202,7 @@ const ProductQuickView = ({ product, children }: ProductQuickViewProps) => {
                   {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
                 </Button>
                 
-                <VirtualTryOn productName={product.name} productImage={product.image} />
+                <VirtualTryOn productName={product.name} productImage={product.images?.[0] || product.image || '/placeholder.svg'} />
               </div>
             </div>
 

@@ -3,40 +3,65 @@ import { Card } from "@/components/ui/card";
 import { useCartStore } from "@/stores/cartStore";
 import { AddToCartAnimation } from "@/components/AddToCartAnimation";
 import ProductQuickView from "@/components/ProductQuickView";
+import { useProducts } from "@/hooks/useProducts";
+import { useState, useEffect } from "react";
 
 const FeaturedProducts = () => {
   const addItem = useCartStore((state) => state.addItem);
-
-  const products = [
+  const { products: firebaseProducts, loading } = useProducts();
+  
+  // Fallback products if no Firebase products exist
+  const fallbackProducts = [
     {
-      id: 1,
+      id: "fallback-1",
       name: "HERITAGE TEE",
       price: 699,
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop",
-      category: "ROOTS"
+      images: ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=500&fit=crop"],
+      category: "ROOTS",
+      featured: true,
+      description: "Authentic streetwear rooted in tradition",
+      sizes: ["XS", "S", "M", "L", "XL"],
+      colors: ["Black", "White"],
+      stock: { XS: 10, S: 10, M: 10, L: 10, XL: 10 },
+      createdAt: new Date()
     },
     {
-      id: 2,
+      id: "fallback-2", 
       name: "ANCESTRAL FLOW",
       price: 699,
-      image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop",
-      category: "LEGACY"
+      images: ["https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&h=500&fit=crop"],
+      category: "LEGACY",
+      featured: true,
+      description: "Flow with your ancestral heritage",
+      sizes: ["XS", "S", "M", "L", "XL"],
+      colors: ["Black", "White"],
+      stock: { XS: 10, S: 10, M: 10, L: 10, XL: 10 },
+      createdAt: new Date()
     },
     {
-      id: 3,
-      name: "CULTURE KEEPER",
+      id: "fallback-3",
+      name: "CULTURE KEEPER", 
       price: 699,
-      image: "https://images.unsplash.com/photo-1583743814966-8936f37f4678?w=400&h=500&fit=crop",
-      category: "TRADITION"
+      images: ["https://images.unsplash.com/photo-1583743814966-8936f37f4678?w=400&h=500&fit=crop"],
+      category: "TRADITION",
+      featured: true,
+      description: "Keep your culture alive",
+      sizes: ["XS", "S", "M", "L", "XL"],
+      colors: ["Black", "White"],
+      stock: { XS: 10, S: 10, M: 10, L: 10, XL: 10 },
+      createdAt: new Date()
     }
   ];
 
-  const handleAddToCart = (product: typeof products[0]) => {
+  // Use Firebase products if available, otherwise use fallback
+  const featuredProducts = firebaseProducts?.filter(p => p.featured).slice(0, 3) || fallbackProducts;
+
+  const handleAddToCart = (product: any) => {
     addItem({
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.image,
+      image: product.images?.[0] || product.image,
       quantity: 1,
       size: "M"
     });
@@ -60,12 +85,12 @@ const FeaturedProducts = () => {
 
         {/* Products Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-16 stagger-animation">
-          {products.map((product) => (
+          {featuredProducts.map((product) => (
             <ProductQuickView key={product.id} product={product}>
               <Card className="group bg-card border-border shadow-card hover:shadow-neon/20 transition-all duration-500 overflow-hidden animate-fade-up hover:scale-[1.02] hover:-translate-y-2 cursor-pointer">
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
-                    src={product.image}
+                    src={product.images?.[0] || product.image}
                     alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
@@ -91,7 +116,7 @@ const FeaturedProducts = () => {
                   <h3 className="text-xl font-bold font-heading mb-2">{product.name}</h3>
                   <p className="text-2xl font-semibold text-white mb-4">₱{product.price}</p>
                   <AddToCartAnimation
-                    productImage={product.image}
+                    productImage={product.images?.[0] || product.image}
                     onAddToCart={() => handleAddToCart(product)}
                   >
                     <Button 

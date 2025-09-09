@@ -3,7 +3,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import SearchModal from "./SearchModal";
 import CartSidebar from "./CartSidebar";
-import { useCartStore } from "@/stores/cartStore";
+import { useCartContext } from "@/context/CartContext";
+import { useAuthContext } from "@/context/AuthContext";
 import { motion, AnimatePresence } from "framer-motion";
 import NumberFlow from "@number-flow/react";
 
@@ -11,7 +12,8 @@ const SmoothNavigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const getTotalItems = useCartStore((state) => state.getTotalItems);
+  const { cartCount } = useCartContext();
+  const { user } = useAuthContext();
 
   return (
     <>
@@ -165,7 +167,7 @@ const SmoothNavigation = () => {
                 >
                   <ShoppingCart size={20} />
                   <AnimatePresence>
-                    {getTotalItems() > 0 && (
+                    {cartCount > 0 && (
                       <motion.span 
                         className="absolute -top-1 -right-1 bg-gradient-to-r from-primary to-accent text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center"
                         initial={{ scale: 0, rotate: 180 }}
@@ -173,7 +175,7 @@ const SmoothNavigation = () => {
                         exit={{ scale: 0, rotate: -180 }}
                         transition={{ type: "spring", stiffness: 500, damping: 15 }}
                       >
-                        <NumberFlow value={getTotalItems()} />
+                        <NumberFlow value={cartCount} />
                       </motion.span>
                     )}
                   </AnimatePresence>

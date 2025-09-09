@@ -1,6 +1,5 @@
 import heroImage from "@/assets/hero-streetwear.jpg";
 import { Button } from "@/components/ui/button";
-import { GooeyText } from "@/components/ui/gooey-text-morphing";
 
 const HeroSection = () => {
   return (
@@ -27,15 +26,11 @@ const HeroSection = () => {
             </span>
           </h1>
 
-                    {/* Gooey Text Morphing */}
-                    <div className="animate-fade-up animation-delay-450">
-            <GooeyText
-              texts={["WE FAIL.", "WE LEARN.", "WE CONQUER."]}
-              morphTime={1.2}
-              cooldownTime={1.5}
-              className="font-bold"
-              textClassName="text-2xl md:text-4xl text-black font-heading"
-            />
+          {/* Motivational Text */}
+          <div className="animate-fade-up animation-delay-450">
+            <h2 className="text-2xl md:text-4xl text-black font-heading font-bold">
+              WE FAIL. WE LEARN. WE CONQUER.
+            </h2>
           </div>
 
           {/* Subheading */}
@@ -50,7 +45,7 @@ const HeroSection = () => {
             <a href="/shop">
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground px-12 py-6 text-lg font-semibold tracking-wide shadow-neon transition-all duration-300 hover:scale-105 hover:shadow-neon/50 relative overflow-hidden group"
+                className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground px-8 py-4 text-lg font-semibold tracking-wide shadow-neon transition-all duration-300 hover:scale-105 hover:shadow-neon/50 relative overflow-hidden group h-auto min-h-[3rem]"
               >
                 <span className="relative z-10">SHOP NOW</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

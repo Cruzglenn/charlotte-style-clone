@@ -5,8 +5,11 @@ import FeaturedProducts from "@/components/FeaturedProducts";
 import BrandStory from "@/components/BrandStory";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { useAuthRedirect } from "@/hooks/useAuthRedirect";
 
 const Index = () => {
+  useAuthRedirect(); // Auto-redirect admin users to admin panel
+
   return (
     <motion.div 
       className="min-h-screen bg-background"
