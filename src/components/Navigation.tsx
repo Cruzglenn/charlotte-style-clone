@@ -18,14 +18,17 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Left Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="/" className="text-sm font-medium hover:text-primary transition-smooth">
+              <a href="/" className="text-sm font-medium hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 HOME
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <a href="/shop" className="text-sm font-medium hover:text-primary transition-smooth">
+              <a href="/shop" className="text-sm font-medium hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 SHOP
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
-              <a href="/collections" className="text-sm font-medium hover:text-primary transition-smooth">
+              <a href="/collections" className="text-sm font-medium hover:text-white transition-all duration-300 hover:scale-105 relative group">
                 COLLECTIONS
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
             </div>
 
@@ -41,8 +44,8 @@ const Navigation = () => {
 
             {/* Center Logo */}
             <div className="absolute left-1/2 transform -translate-x-1/2">
-              <a href="/" className="text-2xl font-bold font-heading tracking-wider">
-                YOUR BRAND
+              <a href="/" className="text-2xl font-bold font-heading tracking-wider hover:text-white transition-all duration-300">
+                <span className="text-white">DEEPLY</span> <span className="text-gray-400">ROOTED</span>
               </a>
             </div>
 
@@ -52,10 +55,15 @@ const Navigation = () => {
                 variant="ghost" 
                 size="sm"
                 onClick={() => setIsSearchOpen(true)}
+                className="hover:bg-white/10 hover:text-white transition-all duration-300 hover:scale-110"
               >
                 <Search size={20} />
               </Button>
-              <Button variant="ghost" size="sm">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="hover:bg-white/10 hover:text-white transition-all duration-300 hover:scale-110"
+              >
                 <a href="/profile">
                   <User size={20} />
                 </a>
@@ -63,12 +71,12 @@ const Navigation = () => {
               <Button 
                 variant="ghost" 
                 size="sm" 
-                className="relative"
+                className="relative hover:bg-white/10 hover:text-white transition-all duration-300 hover:scale-110"
                 onClick={() => setIsCartOpen(true)}
               >
                 <ShoppingCart size={20} />
                 {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-primary to-accent text-primary-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center animate-pulse-slow">
                     {getTotalItems()}
                   </span>
                 )}
@@ -76,19 +84,19 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Mobile Menu */}
+            {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden py-4 space-y-4 border-t border-border">
-              <a href="/" className="block text-sm font-medium hover:text-primary transition-smooth">
+            <div className="md:hidden py-4 space-y-4 border-t border-border animate-fade-in">
+              <a href="/" className="block text-sm font-medium hover:text-white transition-all duration-300 hover:translate-x-2 animate-slide-in-left">
                 HOME
               </a>
-              <a href="/shop" className="block text-sm font-medium hover:text-primary transition-smooth">
+              <a href="/shop" className="block text-sm font-medium hover:text-white transition-all duration-300 hover:translate-x-2 animate-slide-in-left animation-delay-150">
                 SHOP
               </a>
-              <a href="/collections" className="block text-sm font-medium hover:text-primary transition-smooth">
+              <a href="/collections" className="block text-sm font-medium hover:text-white transition-all duration-300 hover:translate-x-2 animate-slide-in-left animation-delay-300">
                 COLLECTIONS
               </a>
-              <a href="/profile" className="block text-sm font-medium hover:text-primary transition-smooth">
+              <a href="/profile" className="block text-sm font-medium hover:text-white transition-all duration-300 hover:translate-x-2 animate-slide-in-left animation-delay-450">
                 PROFILE
               </a>
             </div>

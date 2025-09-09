@@ -12,16 +12,16 @@ const AnnouncementBanner = () => {
         <div className="flex animate-pulse">
           <div className="flex whitespace-nowrap animate-marquee">
             <span className="mx-8 text-sm text-muted-foreground">
-              Support hours 9am-6pm, Mon-Sat
+              🌱 Authentic Heritage • Premium Quality
             </span>
             <span className="mx-8 text-sm text-muted-foreground">
-              Free shipping on orders over $100
+              🚚 Free shipping on orders over <span className="text-white">₱3,750</span>
             </span>
             <span className="mx-8 text-sm text-muted-foreground">
-              New collection dropping soon
+              ✨ New Heritage Collection • Limited Edition
             </span>
             <span className="mx-8 text-sm text-muted-foreground">
-              Follow us on Instagram @yourshirtbrand
+              📱 Follow us @deeplyrooted • Stay Connected
             </span>
           </div>
         </div>

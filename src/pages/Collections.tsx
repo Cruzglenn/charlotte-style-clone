@@ -1,6 +1,8 @@
-import Navigation from "@/components/Navigation";
+import SmoothNavigation from "@/components/SmoothNavigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ShirtCollectionDemo } from "@/components/ShirtCollectionDemo";
+import { motion } from "framer-motion";
 
 const Collections = () => {
   const collections = [
@@ -35,8 +37,14 @@ const Collections = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <motion.div 
+      className="min-h-screen bg-background"
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.5 }}
+    >
+      <SmoothNavigation />
       
       <main className="container mx-auto px-4 py-16">
         {/* Header */}
@@ -94,6 +102,11 @@ const Collections = () => {
           ))}
         </div>
 
+        {/* Shirt Collection Scroll Animation */}
+        <div className="my-20">
+          <ShirtCollectionDemo />
+        </div>
+
         {/* CTA Section */}
         <div className="text-center mt-20">
           <h2 className="text-3xl font-bold font-heading mb-4">
@@ -114,7 +127,7 @@ const Collections = () => {
           </div>
         </div>
       </main>
-    </div>
+    </motion.div>
   );
 };
 

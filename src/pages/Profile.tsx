@@ -1,7 +1,8 @@
-import Navigation from "@/components/Navigation";
+import SmoothNavigation from "@/components/SmoothNavigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { User, Settings, Package, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Profile = () => {
   // This would normally check authentication status
@@ -10,8 +11,14 @@ const Profile = () => {
 
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-background">
-        <Navigation />
+      <motion.div 
+        className="min-h-screen bg-background"
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -100 }}
+        transition={{ duration: 0.5 }}
+      >
+        <SmoothNavigation />
         
         <main className="container mx-auto px-4 py-16">
           <div className="max-w-md mx-auto text-center">
@@ -43,14 +50,20 @@ const Profile = () => {
             </Card>
           </div>
         </main>
-      </div>
+      </motion.div>
     );
   }
 
   // This would show when user is logged in
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <motion.div 
+      className="min-h-screen bg-background"
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+      transition={{ duration: 0.5 }}
+    >
+      <SmoothNavigation />
       
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
@@ -77,7 +90,7 @@ const Profile = () => {
           </div>
         </div>
       </main>
-    </div>
+    </motion.div>
   );
 };
 

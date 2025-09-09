@@ -16,9 +16,9 @@
     --popover: 220 15% 12%;
     --popover-foreground: 210 40% 95%;
 
-    /* Cinematic blue primary */
-    --primary: 210 80% 55%;
-    --primary-foreground: 220 15% 8%;
+    /* Dark gray streetwear theme for better readability */
+    --primary: 0 0% 15%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 220 15% 15%;
     --secondary-foreground: 210 40% 95%;
@@ -26,32 +26,32 @@
     --muted: 220 10% 20%;
     --muted-foreground: 215 15% 65%;
 
-    --accent: 190 85% 50%;
-    --accent-foreground: 220 15% 8%;
+    --accent: 0 0% 25%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 75% 60%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 220 15% 20%;
     --input: 220 15% 15%;
-    --ring: 210 80% 55%;
+    --ring: 0 0% 15%;
 
     --radius: 0.5rem;
 
     /* Urban streetwear specific colors */
-    --neon-blue: 195 100% 70%;
-    --electric-cyan: 180 100% 50%;
+    --neon-blue: 0 0% 15%;
+    --electric-cyan: 0 0% 25%;
     --midnight: 220 25% 5%;
     --steel: 215 10% 40%;
     --concrete: 215 8% 25%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%), hsl(210 50% 15%));
-    --gradient-neon: linear-gradient(90deg, hsl(195 100% 70%), hsl(180 100% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 8%), hsl(0 0% 15%));
+    --gradient-neon: linear-gradient(90deg, hsl(0 0% 15%), hsl(0 0% 25%));
     --gradient-overlay: linear-gradient(180deg, transparent, hsl(220 15% 8% / 0.8));
     
     /* Shadows and glows */
-    --shadow-neon: 0 0 20px hsl(195 100% 70% / 0.3), 0 0 40px hsl(195 100% 70% / 0.2);
+    --shadow-neon: 0 0 20px hsl(0 0% 15% / 0.3), 0 0 40px hsl(0 0% 15% / 0.2);
     --shadow-card: 0 10px 30px -10px hsl(220 15% 5% / 0.5);
     
     /* Animations */
@@ -79,3 +79,28 @@
 .animate-marquee {
   animation: marquee 20s linear infinite;
 }
+
+/* Animation delay utilities */
+.animation-delay-150 {
+  animation-delay: 150ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-450 {
+  animation-delay: 450ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+/* Stagger animation for grid items */
+.stagger-animation > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-animation > *:nth-child(2) { animation-delay: 150ms; }
+.stagger-animation > *:nth-child(3) { animation-delay: 300ms; }
+.stagger-animation > *:nth-child(4) { animation-delay: 450ms; }
+.stagger-animation > *:nth-child(5) { animation-delay: 600ms; }
+.stagger-animation > *:nth-child(6) { animation-delay: 750ms; }

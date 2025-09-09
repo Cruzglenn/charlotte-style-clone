@@ -13,9 +13,9 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const mockSearchResults = [
-    { id: 1, name: "MIDNIGHT TEE", price: "$45", category: "ESSENTIALS" },
-    { id: 2, name: "NEON NIGHTS", price: "$55", category: "LIMITED" },
-    { id: 3, name: "STREET LEGEND", price: "$50", category: "BESTSELLER" },
+    { id: 1, name: "MIDNIGHT TEE", price: "₱699", category: "ESSENTIALS" },
+    { id: 2, name: "NEON NIGHTS", price: "₱699", category: "LIMITED" },
+    { id: 3, name: "STREET LEGEND", price: "₱699", category: "BESTSELLER" },
   ];
 
   const filteredResults = mockSearchResults.filter(item =>
@@ -53,12 +53,16 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                   <div 
                     key={item.id}
                     className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg hover:bg-secondary/70 transition-colors cursor-pointer"
+                    onClick={() => {
+                      // Navigate to product or close modal
+                      onClose();
+                    }}
                   >
                     <div>
                       <h4 className="font-semibold">{item.name}</h4>
                       <p className="text-sm text-muted-foreground">{item.category}</p>
                     </div>
-                    <span className="text-primary font-semibold">{item.price}</span>
+                    <span className="text-white font-semibold">{item.price}</span>
                   </div>
                 ))}
               </div>

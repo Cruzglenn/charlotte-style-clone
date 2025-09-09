@@ -1,18 +1,29 @@
 import AnnouncementBanner from "@/components/AnnouncementBanner";
-import Navigation from "@/components/Navigation";
+import SmoothNavigation from "@/components/SmoothNavigation";
 import HeroSection from "@/components/HeroSection";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import BrandStory from "@/components/BrandStory";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <motion.div 
+      className="min-h-screen bg-background"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <AnnouncementBanner />
-      <Navigation />
+      <SmoothNavigation />
       <main>
         <HeroSection />
         <FeaturedProducts />
+        <BrandStory />
       </main>
-    </div>
+      <Footer />
+    </motion.div>
   );
 };
 
